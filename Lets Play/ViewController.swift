@@ -9,11 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBAction func btn_firstEmoji(_ sender: UIButton) {
-        self.flipCard(withEmoji: "👻", on: sender)
+    
+    var flipCount = 0 {
+        didSet {
+            lbl_flipCount.text = "Flips: \(flipCount)"
+        }
     }
     
+    @IBOutlet weak var lbl_flipCount: UILabel!
+    @IBAction func btn_firstEmoji(_ sender: UIButton) {
+        self.flipCount += 1
+        self.flipCard(withEmoji: "👻", on: sender)
+    }
     @IBAction func btn(_ sender: UIButton) {
+        self.flipCount += 1
         self.flipCard(withEmoji: "🎃", on: sender)
     }
 
